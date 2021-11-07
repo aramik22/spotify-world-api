@@ -4,9 +4,8 @@ namespace Src\Controllers;
 
 use Src\Lib\Config;
 use Src\Models\AuthModel;
-use Src\Models\SpotifyModel;
 
-class SpotifyController extends SpotifyModel
+class SpotifyController
 {
     private $rest_handler;
     private $auth;
