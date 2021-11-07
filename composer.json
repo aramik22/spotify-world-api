@@ -1,0 +1,18 @@
+{
+    "require": {
+        "slim/slim": "3.*",
+        "guzzlehttp/guzzle": "^7.4",
+        "monolog/monolog": "^2.3",
+        "illuminate/database": "^8.69",
+        "robmorgan/phinx": "^0.12.9",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\Models\\": "src/models/",
+            "Src\\Controllers\\": "src/controllers/",
+            "Src\\Lib\\": "src/lib/",
+            "Src\\": "src/"
+        }
+    }
+}
