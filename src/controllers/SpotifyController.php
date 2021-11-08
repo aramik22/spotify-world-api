@@ -24,10 +24,11 @@ class SpotifyController
         $this->log = new LogController();
         $this->toolkit = new ToolkitController();
     }
-    private function getAccessToken($client_id, $client_secret)
+    private function getAccessToken()
     {
         $this->log->logInfo(__FUNCTION__, ' GETTING ACCESS TOKEN');
-        $authorization = 'Basic ' . base64_encode($client_id . ':' . $client_secret);
+        $auth_data = $this->auth->where('oauth_name', $this->app_name)->get();
+        $authorization = 'Basic ' . base64_encode($auth_data[0]['client_id'] . ':' . $auth_data[0]['client_secret']);
         $headers = $this->rest_handler->setHeaders($authorization);
         $params['grant_type'] = 'client_credentials';
         $response = $this->rest_handler->rest('POST', self::API_SPOTIFY_TOKEN_ENDPOINT, $params, $headers);
@@ -39,8 +40,7 @@ class SpotifyController
     {
         try {
             $this->log->logInfo(__FUNCTION__, ' GETTING BAND IN SPOTIFY: ' . $band);
-            $auth_data = $this->auth->where('oauth_name', $this->app_name)->get();
-            $access_token = $this->getAccessToken($auth_data[0]['client_id'], $auth_data[0]['client_secret']);
+            $access_token = $this->getAccessToken();
             $url = self::API_SPOTIFY_ENDPOINT . self::API_SPOTIFY_VERSION . "search?";
             $authorization = 'Bearer ' . $access_token;
             $headers = $this->rest_handler->setHeaders($authorization);
