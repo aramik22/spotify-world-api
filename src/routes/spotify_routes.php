@@ -9,7 +9,7 @@ use Src\Controllers\ToolkitController;
 
 $app = new \Slim\App;
 $app->group('/v1', function () use ($app) {
-    $app->get('/albums', function (Request $request, Response $response, array $args) {
+    $app->get('/albums', function (Request $request, Response $response) {
         $spotify = new SpotifyController();
         $toolkit = new ToolkitController();
         $log = new LogController();
@@ -19,6 +19,12 @@ $app->group('/v1', function () use ($app) {
         }
         $band = $request->getQueryParams()['q'];
         $response = $spotify->getBandData($band);
+        return $response;
+    });
+    $app->get('/token', function (Request $request, Response $response) {
+        $spotify = new SpotifyController();
+        $toolkit = new ToolkitController();
+        $response = $spotify->getAccessToken();
         return $response;
     });
 });
