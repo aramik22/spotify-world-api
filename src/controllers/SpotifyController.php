@@ -88,6 +88,8 @@ class SpotifyController
         $result['cover']['height'] = $album['images'][0]['height'];
         $result['cover']['width'] = $album['images'][0]['width'];
         $result['cover']['url'] = $album['images'][0]['url'];
+        echo $album['images'][0]['url'];
+        var_dump($result);
         return $result;
     }
     private function formatAlbums($albums)
