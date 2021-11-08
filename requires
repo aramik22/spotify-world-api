@@ -1,6 +1,0 @@
- llowOverride All
-sudo a2enmod rewrite
-php7.4-sqlite3
-composer require illuminate/database
-composer require robmorgan/phinx
-./vendor/bin/phpunit --stderr --debug src/test/
