@@ -21,9 +21,6 @@ class SpotifyRequestTest extends TestCase
     }
     public function testGetAccessToken()
     {
-        // //$auth = new AuthModel();
-        // $auth_data = $this->auth->where('oauth_name', self::APP_NAME)->get();
-        // var_dump($this->auth);
         $client = new Client(['base_url' => '']);
         $authorization = 'Basic ';
         $authorization .= self::API_CLIENT_CODE;
