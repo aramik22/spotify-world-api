@@ -19,7 +19,6 @@ class Config
     {
         $config_file = $_SERVER['DOCUMENT_ROOT'] . '/' . $api_dir . '/' . self::LOCAL_DIR;
         $config_file .= ($filename) ? $filename : self::DEFAULT_CONFIG;
-        $config_file = '/var/www/html/spotify-world-api/src/config/config.conf';
         if (!file_exists($config_file)) {
             $log_msg = "File [" . $config_file . "] does not exists\n";
             exit($log_msg);
